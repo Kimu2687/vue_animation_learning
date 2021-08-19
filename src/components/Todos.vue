@@ -105,5 +105,11 @@ transform: scale(0)
   }
   .list-leave-active{
     transition: all 0.3s ease;
+    position: absolute;
+  }
+
+  .list-move{
+    transition: all 0.5s ease;
+
   }
 </style>
