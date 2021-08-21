@@ -21,54 +21,66 @@
 
 <script>
 import { ref } from '@vue/reactivity';
+import  gsap from 'gsap';
+
 
 export default {
   setup() {
     const showTitle=ref(true);
-const beforenter=()=>{
+const beforenter=(element)=>{
 console.log("before enter");
+element.style.transform='translateY(-60px)'
+element.style.opacity=0
+
 }
-const enter=(el)=>{
-console.log(" enter");
-el.style.color='green'
+const enter=(element,done)=>{
+// console.log(" enter");
+// element.style.color='green'
+gsap.to(element,{
+  duration:3,
+  y:0,
+  opacity:1,
+  ease:'bounce.out',
+  onComplete:done,
+})
 
 }
  const afterenter=()=>{
-setTimeout(()=>showTitle.value=false,1000)
+// setTimeout(()=>showTitle.value=false,1000)
 
 console.log("after enter");
 
 }
- const beforeleave=()=>{
+//  const beforeleave=()=>{
 
 
-console.log("before leave");
+// console.log("before leave");
 
-} 
-const leave=()=>{
+// } 
+// const leave=()=>{
 
 
-console.log("leave");
+// console.log("leave");
 
-}
- const afterleave=(el)=>{
+// }
+//  const afterleave=(el)=>{
    
 
-setTimeout(()=>showTitle.value=true,1000)
-el.style.color='black'
+// setTimeout(()=>showTitle.value=true,1000)
+// el.style.color='black'
 
-console.log("after leave");
+// console.log("after leave");
 
-}
+// }
 
-return{beforenter,enter,afterenter,showTitle,beforeleave,afterleave,leave}
+return{beforenter,enter,showTitle,afterenter}
 
   }
 }
 </script>
 
 <style>
-.fade-enter-from{
+/* .fade-enter-from{
 opacity: 0;
 }
 .fade-enter-active{
@@ -79,7 +91,7 @@ opacity: 0;
 }
 .fade-leave-active{
   transition: all ease 2s;
-}
+} */
 
 
   .about {
