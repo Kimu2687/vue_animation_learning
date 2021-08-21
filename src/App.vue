@@ -4,7 +4,15 @@
     <router-link to="/about">About</router-link> | 
     <router-link to="/contact">Contact</router-link>
   </div>
-  <router-view/>
+  <router-view v-slot="{Component}" >
+    <transition name="route" mode="out-in">
+<component :is="Component">
+
+  
+</component>
+
+    </transition>
+  </router-view>
 </template>
 
 <style>
@@ -24,5 +32,23 @@ body {
 }
 #nav a.router-link-exact-active {
   color: #42b983;
+}
+
+
+.route-enter-from{
+  opacity: 0;
+  transform: translateX(100px);
+}
+
+.route-enter-active{
+transform:all 0.3s ease-out;
+
+}
+.route-leave-to{
+opacity: 0;
+transform: translateX(-100px);
+}
+.route-leave-active{
+  transition: all 0.3s ease-in;
 }
 </style>
