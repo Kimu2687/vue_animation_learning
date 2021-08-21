@@ -28,8 +28,9 @@ export default {
 const beforenter=()=>{
 console.log("before enter");
 }
-const enter=()=>{
+const enter=(el)=>{
 console.log(" enter");
+el.style.color='green'
 
 }
  const afterenter=()=>{
@@ -50,8 +51,11 @@ const leave=()=>{
 console.log("leave");
 
 }
- const afterleave=()=>{
+ const afterleave=(el)=>{
+   
+
 setTimeout(()=>showTitle.value=true,1000)
+el.style.color='black'
 
 console.log("after leave");
 
